@@ -23,7 +23,7 @@
  * @link      https://github.com/WindowsAzure/azure-sdk-for-php
  */
 
-namespace Tests\Unit\WindowsAzure\ServiceBus\Internal;
+namespace Tests\unit\WindowsAzure\ServiceBus;
 
 use Tests\Framework\TestResources;
 use Tests\Framework\ServiceRestProxyTestBase;
@@ -50,7 +50,7 @@ class WrapRestProxyTest extends ServiceRestProxyTestBase
     /** @var  IWrap */
     private $_wrapRestProxy;
 
-    public function setUp()
+    public function setUp():void
     {
         $this->skipIfEmulated();
 

@@ -96,7 +96,7 @@ class RuntimeVersionManagerTest extends TestCase
         );
 
         // Test
-        $this->setExpectedException(get_class(new \RuntimeException()));
+        $this->expectException(get_class(new \RuntimeException()));
         $runtimeVersionManager->getRuntimeClient(
             vfsStream::url($rootDirectory.'/'.$fileName)
         );

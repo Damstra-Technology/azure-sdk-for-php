@@ -23,7 +23,7 @@
  * @link      https://github.com/windowsazure/azure-sdk-for-php
  */
 
-namespace Tests\Unit\WindowsAzure\ServiceRuntime;
+namespace Tests\unit\WindowsAzure\ServiceRuntime;
 
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
@@ -57,7 +57,7 @@ class RoleEnvironmentTest extends TestCase
         putenv('WaRuntimeEndpoint=');
 
         // Test
-        $this->setExpectedException(get_class(
+        $this->expectException(get_class(
             new RoleEnvironmentNotAvailableException()
         ));
 

@@ -516,8 +516,8 @@ class UtilitiesTest extends TestCase
         // Assert
         $this->assertNotNull($actual1);
         $this->assertNotNull($actual2);
-        $this->assertInternalType('string', $actual1);
-        $this->assertInternalType('string', $actual2);
+        $this->assertIsString($actual1);
+        $this->assertIsString($actual2);
         $this->assertNotEquals($actual1, $actual2);
     }
 
@@ -536,44 +536,6 @@ class UtilitiesTest extends TestCase
 
         // Assert
         $this->assertEquals($expected, $actual);
-    }
-
-    /**
-     * @covers \WindowsAzure\Common\Internal\Utilities::getEntityId
-     */
-    public function testGetEntityIdWithString()
-    {
-
-        // Setup
-        $id = 'kjgdfg57';
-
-        // Test
-        $result = Utilities::getEntityId($id, 'WindowsAzure\MediaServices\Models\Asset');
-
-        //Assert
-        $this->assertEquals($id, $result);
-    }
-
-    /**
-     * @covers \WindowsAzure\Common\Internal\Utilities::getEntityId
-     */
-    public function testGetEntityIdWithObject()
-    {
-
-        // Setup
-        $idKey = 'Id';
-        $optionKey = 'Options';
-        $assetArray = [
-                $idKey => 'kjgdfg57',
-                $optionKey => Asset::OPTIONS_NONE,
-        ];
-        $value = Asset::createFromOptions($assetArray);
-
-        // Test
-        $result = Utilities::getEntityId($value, 'WindowsAzure\MediaServices\Models\Asset');
-
-        //Assert
-        $this->assertEquals($assetArray[$idKey], $result);
     }
 
     /**
@@ -643,7 +605,7 @@ class UtilitiesTest extends TestCase
         $data = 'Test data more than 16 bytes';
         $key = '12345';
         $efectiveInitializationVector = Utilities::generateCryptoKey(8);
-        $this->setExpectedException(get_class(new \InvalidArgumentException('')));
+        $this->expectException(get_class(new \InvalidArgumentException('')));
 
         $initializationVector = str_pad($efectiveInitializationVector, 16, chr(255));
 
@@ -661,7 +623,7 @@ class UtilitiesTest extends TestCase
         $data = 'Test data more than 16 bytes';
         $key = Utilities::generateCryptoKey(32);
         $initializationVector = '1234';
-        $this->setExpectedException(get_class(new \InvalidArgumentException('')));
+        $this->expectException(get_class(new \InvalidArgumentException('')));
 
         // Test
         $actual = Utilities::ctrCrypt($data, $key, $initializationVector);

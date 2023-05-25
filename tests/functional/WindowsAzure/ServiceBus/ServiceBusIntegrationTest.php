@@ -23,7 +23,7 @@
  * @link      https://github.com/windowsazure/azure-sdk-for-php
  */
 
-namespace Tests\Functional\WindowsAzure\ServiceBus;
+namespace Tests\functional\WindowsAzure\ServiceBus;
 
 use Psr\Http\Message\ResponseInterface;
 use WindowsAzure\Common\Internal\Http\IHttpClient;
@@ -48,7 +48,7 @@ class ServiceBusIntegrationTest extends IntegrationTestBase
     private $RECEIVE_AND_DELETE_5_SECONDS;
     private $PEEK_LOCK_5_SECONDS;
 
-    public function setUp()
+    public function setUp():void
     {
         parent::setUp();
         $this->RECEIVE_AND_DELETE_5_SECONDS = new ReceiveMessageOptions();

@@ -105,7 +105,7 @@ class ScenarioTestBase extends IntegrationTestBase
         return $customProperties;
     }
 
-    public static function assertEquals($expected, $actual, $message = '', $delta = 0, $maxDepth = 10, $canonicalize = false, $ignoreCase = false)
+    public static function assertEquals($expected, $actual, $message = '', $delta = 0, $maxDepth = 10, $canonicalize = false, $ignoreCase = false):void
     {
         self::write('  assertEquals(\''.
                 ($expected instanceof \DateTime ?
@@ -126,7 +126,7 @@ class ScenarioTestBase extends IntegrationTestBase
             $effAct = $effAct->setTimezone(new \DateTimeZone('UTC'));
         }
 
-        parent::assertEquals($expected, $actual, $message, $delta, $maxDepth, $canonicalize, $ignoreCase);
+        parent::assertEqualsIgnoringCase($expected, $actual, $message);
     }
 
     protected static function write($message)

@@ -35,7 +35,7 @@ class IntegrationTestBase extends ServiceBusRestProxyTestBase
 {
     private static $isOneTimeSetup = false;
 
-    public function setUp()
+    public function setUp():void
     {
         parent::setUp();
         $fiddlerFilter = new FiddlerFilter();
@@ -99,7 +99,7 @@ class IntegrationTestBase extends ServiceBusRestProxyTestBase
         }
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass():void
     {
         if (self::$isOneTimeSetup) {
             self::$isOneTimeSetup = false;

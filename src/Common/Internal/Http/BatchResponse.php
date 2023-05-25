@@ -25,12 +25,10 @@
 
 namespace WindowsAzure\Common\Internal\Http;
 
-use function GuzzleHttp\Psr7\parse_response;
 use WindowsAzure\Common\Internal\Validate;
 use WindowsAzure\Common\ServiceException;
 use GuzzleHttp\Psr7\Response;
-use Zend\Mime\Message;
-use Zend\Mime\Part;
+use Laminas\Mime\Message;
 
 /**
  * Batch response parser.
@@ -102,7 +100,7 @@ class BatchResponse
         foreach ($allParts as $part) {
             $body = $part->getContent();
             if (!empty($body)) {
-                $response = parse_response($body);
+                $response = \GuzzleHttp\Psr7\Message::parseResponse($body);
 
                 $this->_responses[] = $response;
 
